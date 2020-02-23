@@ -1,4 +1,4 @@
-let pulse = Math.random().toFixed(2);
+let pulse = (Math.random()*10).toFixed(2);
 console.log(pulse);
 
 (function(){
@@ -9,7 +9,7 @@ console.log(pulse);
         particles = [],                                 // vs particles
         properties = {                                  //assotiative array properties od particles
             bgColor         : 'rgba(17, 17, 19, 1)',    //color of background
-            particleColor   : 'rgba(255, 40, 40, 1)',
+            particleColor   : /*'rgba(255, 40, 40, 1)'*/ 'rgba(144, 17, 226, 1)',
             particleRadius  : 4,
             particleCount   : 100,
             particleMaxVelosity : 2,
@@ -19,8 +19,8 @@ console.log(pulse);
 
     document.querySelector('body').appendChild(canvas); //dinamcally change canvas size
     window.onresize = () => {
-        width = canvas.width = innerWidth,
-            height = canvas.height = innerHeight;
+        width = canvas.width = innerWidth;
+        height = canvas.height = innerHeight;
     };
 
     class Particle {
@@ -61,12 +61,7 @@ console.log(pulse);
             }
             this.life --;
         }
-
-
-
     }
-
-
 
     function redrawBackground() {
         ctx.fillStyle = properties.bgColor;
@@ -82,14 +77,14 @@ console.log(pulse);
                 x2 = particles[j].x;
                 y2 = particles[j].y;
                 length = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-                pulse = Math.random().toFixed(2);
+                pulse = (Math.random()).toFixed(2);
 
                 if (length < properties.lineLength) {
                     opacity = 1 - length/properties.lineLength; //the less length the less opacity
                     // ctx.lineWidth = '0,5';
                     ctx.lineWidth = pulse;
-                    //ctx.strokeStyle = 'rgba(5, 158, 0, '+opacity+')';
-                    ctx.strokeStyle = 'rgba(255, 40, 40, '+opacity+')';
+                    ctx.strokeStyle = 'rgba(144, 17, 226, '+opacity+')';
+                    //ctx.strokeStyle = 'rgba(255, 40, 40, '+opacity+')';
                     ctx.beginPath();
                     ctx.moveTo(x1, y1);
                     ctx.lineTo(x2, y2);
@@ -122,7 +117,6 @@ console.log(pulse);
 
         loop ();
     }
-
 
     init();
 
