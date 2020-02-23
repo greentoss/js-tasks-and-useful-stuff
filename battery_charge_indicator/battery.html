@@ -1,0 +1,87 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title> battery-charging </title>
+
+    
+</head>
+
+<body>
+
+<div class="container">
+	<div id="battery">
+		<div id="battery-level" class="battery-animation"></div>
+		<div id="battery-level-digit">0%</div>
+	</div>
+	<div id="status"></div>
+	<div id="charging-time"></div>
+	<div id="discharging-time"></div>
+
+
+
+</div>
+
+<style type="text/css">
+	#battery {
+		width: 200px;
+		height: 50px;
+		border: 1px solid #c0c0c0;
+		border-radius: 5px;
+		padding: 10px;
+		position: relative;
+	}
+	#battery::after {
+		content: "";
+		display: block;
+		width: 20px;
+		height: 40px;
+		background: #fff;
+		position: absolute;
+		right: -21px;
+		top: 14px;
+		border: 1px solid #c0c0c0;
+		border-left-color: #fff;
+		border-radius: 0 4px 4px 0;
+	}
+	#battery-level {
+		height: 100%;
+		width: 30%;
+		background: linear-gradient(to bottom, #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
+		transition: all ease 1s;
+	}
+	#battery-level-digit {
+		position: absolute;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		text-align: center;
+		font-size: 30px;
+		line-height: 70px;
+	}
+	#battery-level.battery-animation {
+		animation-name: battery-charged;
+		animation-duration: 4s;
+		animation-iteration-count: infinite;
+	}
+	@keyframes battery-charged {
+		0% {
+			width: 10%;
+		}
+		100% {
+			width: 100%;
+		}
+	}
+
+
+</style>
+
+<script src="battery.js"></script>
+</body>
+
+
+</html>
+
+
+
